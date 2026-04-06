@@ -1,0 +1,12 @@
+import numpy as np
+
+def dice_loss(p, y, eps=1e-8):
+    """
+    Compute Dice Loss for segmentation.
+    """
+    # Write code here
+    p = np.array(p).flatten()
+    y = np.array(y).flatten()
+    intersection = np.sum(p*y)
+    dice = (2*intersection+eps)/(np.sum(p)+np.sum(y)+eps)
+    return 1-dice
